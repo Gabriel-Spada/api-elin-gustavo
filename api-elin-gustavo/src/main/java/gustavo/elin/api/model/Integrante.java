@@ -48,6 +48,21 @@ public class Integrante{
     public Integrante() {
 
     }
+
+    public void atualizarInformacoes(DadosIntegrante dados) {
+        if (dados.Franquia() != null) {
+            this.franquia = dados.Franquia();
+        }
+        if (dados.Nome() != null) {
+            this.nome = dados.Nome();
+        }
+        if (dados.Funcao() != null) {
+            this.funcao = dados.Funcao();
+        }
+        if (dados.Composicao() != null) {
+            this.composicao = dados.Composicao();
+        }
+    }
 }
 
 

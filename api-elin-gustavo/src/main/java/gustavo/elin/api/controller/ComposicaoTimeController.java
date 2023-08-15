@@ -9,6 +9,7 @@ import gustavo.elin.api.integrante.IntegranteRepository;
 import gustavo.elin.api.model.ComposicaoTime;
 import gustavo.elin.api.model.Integrante;
 import gustavo.elin.api.time.DadosTime;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +33,18 @@ public class ComposicaoTimeController {
     @GetMapping
     public List<DadosListagemComposicao> listar() {
         return repository.findAll().stream().map(DadosListagemComposicao::new).toList();
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosComposicao dados) {
+        var composicao = repository.getReferenceById(dados.id());
+        composicao.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deletar(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }

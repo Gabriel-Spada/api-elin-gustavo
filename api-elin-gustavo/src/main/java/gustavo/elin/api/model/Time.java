@@ -1,5 +1,6 @@
 package gustavo.elin.api.model;
 
+import gustavo.elin.api.integrante.DadosIntegrante;
 import gustavo.elin.api.time.DadosTime;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,10 @@ public class Time {
     @Column
     private String data;
 
+    public Time() {
+
+    }
+
     public Time(DadosTime dados) {
         this.id = dados.id();
         this.time = dados.Time();
@@ -33,7 +38,13 @@ public class Time {
 
     }
 
-    public Time() {
+    public void atualizarInformacoes(DadosTime dados) {
+        if (dados.Time() != null) {
+            this.time = dados.Time();
+        }
+        if (dados.Data() != null) {
+            this.data = dados.Data();
+        }
 
     }
 }

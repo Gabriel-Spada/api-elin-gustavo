@@ -38,5 +38,14 @@ public class ComposicaoTime {
     }
 
 
+    public void atualizarInformacoes(DadosComposicao dados) {
+        if (dados.Time() != null) {
+            this.time = dados.Time();
+        }
+        if (dados.Integrante() != null) {
+            this.integrante = dados.Integrante();
+        }
+
+    }
 }
 
